@@ -1,0 +1,44 @@
+{% extends "../generic.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            TICKET
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box">
+                <div class="box-header">
+                    <a href="/createEvent/" class="btn btn-primary">List Event</a>
+                </div>
+                <table id="listdatatrainTable" class="table table-bordered table-hover hover-datatable">
+                    <thead>
+                        <tr>
+                            <th><center>EventID</center></th>
+                            <th><center>Event name</center></th>
+                            <th><center>Strat Time</center></th>
+                            <th><center>End Time</center></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in data %}
+                        <tr>
+                            <td><center><a href="createTicket/{{ row.id }}">{{ row.id }}</a></center></td>
+                            <td><center>{{ row.eventname }}</center></td>
+                            <td><center>{{ row.evenstart }}</center></td>
+                            <td><center>{{ row.evenend }}</center></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+</div>
+{% endblock content %}

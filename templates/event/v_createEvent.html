@@ -1,0 +1,90 @@
+{% extends "../generic.html" %} {% load staticfiles %} {% block content %}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            CREATE EVENT
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Form Create Event</h3>
+            </div>
+            <form role="form" enctype="multipart/form-data" action="{% url 'submitEvent' %}" method="post">
+                {% csrf_token %}
+                <div class="box-body">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label>
+                                Event Name
+                            </label>
+                            <input type="text" name="eventname" class="form-control" placeholder="Insert Event Name" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Event Time</label>
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                              </div>
+                              <input type="text" name="eventtime" class="form-control pull-right" id="datetimeevent">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-header">
+                        <h3 class="box-title">Location</h3>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label>
+                                Location Name
+                            </label>
+                            <input type="text" name="locname" class="form-control" placeholder="Insert Location Name" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>
+                                Location Maps
+                            </label>
+                            <input type="text" name="locmap" class="form-control" placeholder="Insert Location Maps" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label>
+                                Address
+                            </label>
+                            <input type="text" name="address" class="form-control" placeholder="Insert Address" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>
+                                City
+                            </label>
+                            <input type="text" name="city" class="form-control" placeholder="Insert City" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Create Event</button>
+                </div>
+            </form>
+        </div>
+</div>
+
+</section>
+</div>
+{% endblock content %}
+
+{% block script %}
+{{ block.super }}
+
+<script type="text/javascript">
+    $(function () {
+        //Date range picker with time picker
+        $('#datetimeevent').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY HH:mm:ss' })
+    })
+</script>
+
+{% endblock script %}

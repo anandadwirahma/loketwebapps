@@ -1,0 +1,74 @@
+{% extends "../generic.html" %} {% load staticfiles %} {% block content %}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            CREATE TICKET
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Form Create Ticket</h3>
+            </div>
+            <form role="form" enctype="multipart/form-data" action="{% url 'submitTicket' %}" method="post">
+                {% csrf_token %}
+                <div class="box-body">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label>
+                                Event ID
+                            </label>
+                            <input type="text" name="eventid" class="form-control" placeholder="Insert Event ID" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label>
+                                Type
+                            </label>
+                            <input type="text" name="type" class="form-control" placeholder="Berbayar/Gratis" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label>
+                                Price
+                            </label>
+                            <input type="text" name="price" class="form-control" placeholder="Insert Price" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label>
+                                Quantity
+                            </label>
+                            <input type="text" name="qty" class="form-control" placeholder="Insert Quantity" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Create Ticket</button>
+                </div>
+            </form>
+        </div>
+</div>
+
+</section>
+</div>
+{% endblock content %}
+
+{% block script %}
+{{ block.super }}
+
+<script type="text/javascript">
+    $(function () {
+        //Date range picker with time picker
+        $('#datetimeevent').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY HH:mm:ss' })
+    })
+</script>
+
+{% endblock script %}
